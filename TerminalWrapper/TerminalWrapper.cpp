@@ -72,7 +72,6 @@ TerminalWrapperResult TerminalWrapper::Open(const std::string& rTempDir, Termina
     {
         std::string cmd = std::string(". ") + getInputScriptPath + " " + executeScriptPath +
                         " | " + std::string("bash -i ") + executeScriptPath + " 2&> " + logPath;
-        std::cout<<cmd.c_str()<<std::endl;
         pPipeFile       = popen(cmd.c_str(), "w");
         if (nullptr == pPipeFile)
         {
