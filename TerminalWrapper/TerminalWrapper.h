@@ -40,7 +40,7 @@ private:
     std::string tempDir;
 };
 
-const std::string GetInputScript;
-const std::string ExecuteScript;
+extern const std::string GetInputScript;
+extern const std::string ExecuteScript;
 
 #endif  //  TERMINAL_WRAPPER_H

@@ -17,7 +17,7 @@ TerminalWrapperResult TerminalWrapper::Open(const std::string& rTempDir, Termina
 {
     TerminalWrapperResult   ret                 = TerminalWrapperResultSuccess;
     std::string             getInputScriptPath  = Utils::GetPath(rTempDir, TERMINAL_GET_INPUT_SCRIPT_FILE_NAME);
-    std::string             executeScriptPath   = Utils::GetPath(rTempDir, TERMINAL_GET_INPUT_SCRIPT_FILE_NAME);
+    std::string             executeScriptPath   = Utils::GetPath(rTempDir, TERMINAL_EXECUTE_SCRIPT_FILE_NAME);
     std::string             logPath             = Utils::GetPath(rTempDir, TERMINAL_LOG_FILE_NAME);
 
     if (true == isOpen) ret = TerminalWrapperResultOpened;
@@ -70,8 +70,9 @@ TerminalWrapperResult TerminalWrapper::Open(const std::string& rTempDir, Termina
 
     if (TerminalWrapperResultSuccess == ret)
     {
-        std::string cmd = std::string(". ") + getInputScriptPath + " | " +
-                        std::string(". ") + executeScriptPath + " 2&> " + logPath;
+        std::string cmd = std::string(". ") + getInputScriptPath + " " + executeScriptPath +
+                        " | " + std::string("bash -i ") + executeScriptPath + " 2&> " + logPath;
+        std::cout<<cmd.c_str()<<std::endl;
         pPipeFile       = popen(cmd.c_str(), "w");
         if (nullptr == pPipeFile)
         {
