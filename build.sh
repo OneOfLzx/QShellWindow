@@ -9,7 +9,7 @@ do
     dirPath="$dirPath-I $dir "
 done
 
-cmd="g++ $cppPath $dirPath -o demo"
+cmd="g++ $cppPath $dirPath -o demo -lpthread"
 
 echo $cmd
 $cmd

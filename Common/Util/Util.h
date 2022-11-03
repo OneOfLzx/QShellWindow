@@ -1,5 +1,5 @@
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef QSHELLWINDOW_UTILS_H
+#define QSHELLWINDOW_UTILS_H
 
 #include <iostream>
 #include <string.h>
@@ -20,7 +20,9 @@ public:
     static bool MakeDir(const std::string& rDir);
     static bool DeleteDir(const std::string& rDir);
     static std::string GetPath(const std::string& rDir, const std::string& rName);
+    static std::string GetAbsolutePath(const std::string& rPath);
+    static void FGetLine(FILE* f, char* buf);
 };
 
 
-#endif  //  UTILS_H
+#endif  //  QSHELLWINDOW_UTILS_H

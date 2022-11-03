@@ -9,7 +9,6 @@
 
 #define TERMINAL_GET_INPUT_SCRIPT_FILE_NAME         "GetInputScript.sh"
 #define TERMINAL_EXECUTE_SCRIPT_FILE_NAME           "ExecuteScript.sh"
-#define TERMINAL_TEMP_SCRIPT_FILE_NAME              "Tmp.sh"
 #define TERMINAL_LOG_FILE_NAME                      "Log.txt"
 #define TERMINAL_EXIT_CMD                           "exit"
 #define TERMINAL_STOP_COMMAND_CMD                   "WrapperStopCMD"

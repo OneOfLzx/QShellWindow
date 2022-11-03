@@ -57,7 +57,8 @@ bool Utils::MakeDir(const std::string& rDir)
 bool Utils::DeleteDir(const std::string& rDir)
 {
     if (!IsDirExist(rDir)) return false;
-    int ret = ::rmdir(rDir.c_str());
+    std::string cmd = "rm -fr " + rDir;
+    int ret = system(cmd.c_str());
     if (0 != ret)
     {
         return false;
@@ -76,4 +77,19 @@ std::string Utils::GetPath(const std::string& rDir, const std::string& rName)
     {
         return rDir + separator + rName;
     }
+}
+
+std::string Utils::GetAbsolutePath(const std::string& rPath)
+{
+    char buf[10240];
+    std::string cmd = "realpath " + rPath;
+    FILE* fd = popen(cmd.c_str(), "r");
+    FGetLine(fd, buf);
+    pclose(fd);
+    return std::string(buf);
+}
+
+void Utils::FGetLine(FILE* f, char* buf)
+{
+    fscanf(f, "%[^\n]", buf);
 }

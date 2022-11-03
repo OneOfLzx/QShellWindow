@@ -61,10 +61,23 @@ TerminalWrapperResult TerminalWrapper::Open(const std::string& rTempDir, Termina
 
     if (TerminalWrapperResultSuccess == ret)
     {
+        std::ofstream w;
+        w.open(logPath, std::ios::out | std::ios::trunc);
+        if (!w.is_open())
+        {
+            ret = TerminalWrapperResultTempFileError;
+        }
+        w.close();
+    }
+
+    if (TerminalWrapperResultSuccess == ret)
+    {
         std::string cmd = "";
         cmd = "chmod a=rwx " + getInputScriptPath;
         system(cmd.c_str());
         cmd = "chmod a=rwx " + executeScriptPath;
+        system(cmd.c_str());
+        cmd = "chmod a=rwx " + logPath;
         system(cmd.c_str());
     }
 
@@ -83,8 +96,8 @@ TerminalWrapperResult TerminalWrapper::Open(const std::string& rTempDir, Termina
     {
         isOpen      = true;
         tempDir     = rTempDir;
-        rLogStm.Open(logPath);
         SendCommand("cd ~");
+        rLogStm.Open(logPath);
     }
 
     return ret;
@@ -114,5 +127,6 @@ bool TerminalWrapper::SendCommand(const std::string& rCmd)
     std::string command = rCmd + "\n";
     const int   memSize = 1;
     int         nMem    = fwrite(command.c_str(), command.length() + 1, memSize, pPipeFile);
+    fflush(pPipeFile);
     return nMem == memSize;
 }
