@@ -25,6 +25,8 @@ int main()
         "ls",
         "cd ..",
         "ls",
+        "export abc=999",
+        "echo $abc",
         "date",
     };
     const std::string   tempDir = Utils::GetAbsolutePath("~/TerminalWrapperTest");
