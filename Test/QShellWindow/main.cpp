@@ -9,7 +9,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr)
         : QMainWindow(parent)
-    {m_pLogWidget->w QShellWindow(this);
+    {
+        m_pShellWindow = new QShellWindow(this);
         m_pShellWindow->show();
     };
     ~MainWindow() { delete m_pShellWindow; };
