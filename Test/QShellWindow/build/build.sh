@@ -1,5 +1,7 @@
 #! /bin/bash
 
+rm moc_*
+
 qmake
 make
 

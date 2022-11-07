@@ -10,6 +10,7 @@ INCLUDEPATH += $$system(find ../../../TerminalWrapper -type d)
 DEFINES += QT_DEPRECATED_WARNINGS
 
 # Input
+HEADERS += ../../../Widget/QShellWindow.h
 SOURCES += $$system(find .. | grep .cpp)
 SOURCES += $$system(find ../../../Common | grep .cpp)
 SOURCES += $$system(find ../../../TerminalWrapper | grep .cpp)

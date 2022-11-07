@@ -10,7 +10,10 @@ public:
     MainWindow(QWidget *parent = nullptr)
         : QMainWindow(parent)
     {
-        m_pShellWindow = new QShellWindow(this);
+        const std::string   tempDir = Utils::GetAbsolutePath("~/TerminalWrapperTest");
+        Utils::DeleteDir(tempDir);
+
+        m_pShellWindow = new QShellWindow(QString::fromLocal8Bit(tempDir.c_str()), this);
         m_pShellWindow->show();
     };
     ~MainWindow() { delete m_pShellWindow; };
@@ -38,7 +41,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     MainWindow w;
-    w.setGeometry(100, 100, 640, 480);
+    w.setGeometry(100, 100, 1000, 480);
     w.show();
 
     return a.exec();

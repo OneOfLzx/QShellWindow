@@ -39,7 +39,7 @@ const std::string ExecuteScript =
 "while true\n"
 "do\n"
 "    # echo -e \"\\033[32m\\033[1m\"$(date)$USER@\"\\033[0m\"\"\\033[34m\\033[1m$(pwd)\\033[0m: \\c\"\n"
-"    echo -e \"$USER@$(pwd): \\c\"\n"
+"    echo -e \"$USER@$(pwd):   \\c\"\n"
 
 "    read CMD\n"
 
